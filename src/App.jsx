@@ -1,11 +1,18 @@
-import Navbar from "./components/Navbar";
-import Painel from "./components/Painel";
+import Navbar from './components/Navbar';
+import Painel from './components/Painel';
 
 function App() {
   return (
     <>
-      <Navbar/>
-      <Painel/>
+      <header>
+        <Navbar />
+      </header>
+      <main>
+        <Painel />
+      </main>
+      <footer>
+        Developed by Tatuína
+      </footer>
     </>
   );
 }
