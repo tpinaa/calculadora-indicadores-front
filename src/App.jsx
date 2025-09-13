@@ -1,24 +1,21 @@
+import './App.css';
+
+import TelaProvider from './context/TelaProvider';
 import Navbar from './components/Navbar';
 import Painel from './components/Painel';
-import './App.css';
-import FormularioParametro from './components/FormularioParametro';
-import FormularioIndicador from './components/FormularioIndicador';
 
 function App() {
+
   return (
-    <>
+    <TelaProvider>
       <header>
         <Navbar />
       </header>
       <main>
         <Painel />
-        <FormularioParametro/>
-        <FormularioIndicador/>
       </main>
-      <footer>
-        Developed by Tatiana Pina
-      </footer>
-    </>
+      <footer>Developed by Tatiana Pina</footer>
+    </TelaProvider>
   );
 }
 

@@ -46,7 +46,7 @@ function FormularioParametro() {
   
   return (
     <div className="container mt-4">
-      <h3>Cadastro</h3>
+      <h3>Cadastro de Parâmetro</h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="sigla" className="form-label">Sigla</label>

@@ -1,6 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import TelaContext from '../context/TelaContext';
 import CardHistorico from './CardHistorico';
+import FormularioParametro from './FormularioParametro';
+import FormularioIndicador from './FormularioIndicador';
+
 function Painel() {
+  const { tela } = useContext(TelaContext);
+
   const [listaIndicadores, setlistaIndicadores] = useState([]);
 
   useEffect(() => {
@@ -16,11 +22,10 @@ function Painel() {
     getIndicadores();
   }, []);
 
-  console.log(listaIndicadores[0]);
-
   return (
-      <section>
-        {listaIndicadores.map((indicador) => (
+    <section>
+      {tela === 'painel' &&
+        listaIndicadores.map((indicador) => (
           <CardHistorico
             key={indicador.nome}
             title={indicador.sigla}
@@ -29,7 +34,9 @@ function Painel() {
             parametros={indicador.parametros}
           />
         ))}
-      </section>
+      {tela === 'indicador' && <FormularioIndicador />}
+      {tela === 'parametro' && <FormularioParametro />}
+    </section>
   );
 }
 export default Painel;
