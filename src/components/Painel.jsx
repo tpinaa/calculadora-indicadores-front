@@ -16,11 +16,20 @@ function Painel() {
     getIndicadores();
   }, []);
 
+  console.log(listaIndicadores[0]);
+
   return (
-    <CardHistorico
-      title={listaIndicadores[0]?.sigla}
-      valor={listaIndicadores[0]?.valor}
-    />
+      <section>
+        {listaIndicadores.map((indicador) => (
+          <CardHistorico
+            key={indicador.nome}
+            title={indicador.sigla}
+            valor={indicador.valor}
+            descricao={indicador.descricao}
+            parametros={indicador.parametros}
+          />
+        ))}
+      </section>
   );
 }
 export default Painel;

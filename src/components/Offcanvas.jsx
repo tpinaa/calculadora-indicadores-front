@@ -46,6 +46,99 @@ function Offcanvas() {
                                 IPUB
                             </a>
                         </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                PcTD
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                NPROE
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                STEC
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                IDTEC
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                APME
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                NPPI
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                NPROG
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                IAL
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                PPCI
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                PPCN
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                ICT
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                IEO
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                IEPCI
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                ETCO
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                 <li className='nav-item dropdown'>
+                    <a
+                        className='nav-link dropdown-toggle'
+                        href='#'
+                        role='button'
+                        data-bs-toggle='dropdown'
+                        aria-expanded='false'
+                    >
+                        Parâmetro
+                    </a>
+                    <ul className='dropdown-menu dropdown-menu-end'>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                TNSE
+                            </a>
+                        </li>
+                        <li>
+                            <a className='dropdown-item' href='#'>
+                                NGPB
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
