@@ -4,10 +4,11 @@ function FormularioIndicador() {
   const [formData, setFormData] = useState({
     nome: '',
     sigla: '',
-    valor: '',
-    descricao: '',
-    parametros: ''
+    descricao: ''
   });
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [submissionError, setSubmissionError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +21,8 @@ function FormularioIndicador() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setSubmissionError(null);
 
     try {
       const response = await fetch('/api/indicador', {
@@ -37,15 +40,19 @@ function FormularioIndicador() {
       const data = await response.json();
       console.log('Resposta do backend:', data);
 
-      setFormData({ nome: '', sigla: '', valor: '', descricao: '', parametro: '' });
+      setFormData({ nome: '', sigla: '', descricao: '' });
 
       alert('Dados enviados com sucesso!');
+
     } catch (error) {
       console.error('Erro ao enviar dados:', error);
-      alert('Falha ao enviar os dados.');
+      setSubmissionError('Falha ao enviar os dados.');
+
+    } finally {
+      setIsLoading(false);
     }
   };
-  
+
   return (
     <div className="container mt-4">
       <h3>Cadastro de Indicador</h3>
@@ -63,7 +70,7 @@ function FormularioIndicador() {
             required
           />
         </div>
-        
+
         <div className="mb-3">
           <label htmlFor="sigla" className="form-label">Sigla</label>
           <input
@@ -92,7 +99,19 @@ function FormularioIndicador() {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">Enviar</button>
+        {submissionError && (
+          <div className='alert alert-danger' role='alert'>
+            {submissionError}
+          </div>
+        )}
+
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={isLoading}
+        >
+          {isLoading ? 'Enviando...' : 'Enviar'}
+        </button>
       </form>
     </div>
   );

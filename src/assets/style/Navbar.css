@@ -1,3 +1,8 @@
 .fixed-top{
     position: static;
 }
+
+.navbar-logo {
+    width: 100px;
+    height: auto;
+}

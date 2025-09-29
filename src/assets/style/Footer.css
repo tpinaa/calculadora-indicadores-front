@@ -1,0 +1,9 @@
+.footer-container {
+    height: var(--height-footer);
+    background-color: var(--color-footer-bg);
+    text-align: center;
+    line-height: 40px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

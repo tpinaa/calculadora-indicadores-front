@@ -1,0 +1,14 @@
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/*Organiza o conteúdo do root verticalmente, transformando o container principal como flexbox. Dessa maneira, os elementos internos (filhos diretos) serão alinhados de forma flexível, empilhados em coluna e ocupando 100% da altura*/
+main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+/*Faz com que o conteúdo principal ocupe todo o espaço disponível e seja responsivo. Define barra de rolagem automática e espaçameto interno dos elementos*/

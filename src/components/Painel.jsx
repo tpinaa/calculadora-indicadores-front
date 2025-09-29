@@ -1,37 +1,34 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import TelaContext from '../context/TelaContext';
+import { useFetchIndicadores } from '../hooks/useFetchIndicadores';
 import CardHistorico from './CardHistorico';
 import FormularioParametro from './FormularioParametro';
 import FormularioIndicador from './FormularioIndicador';
 
 function Painel() {
   const { tela } = useContext(TelaContext);
+  /*O componente Painel usa o useContext para pegar o valor atual da variável tela, que está sendo gerenciada no TelaContext. O valor determinará se o componente Painel irá mostrar o layout painel, indicador ou patâmetro*/
 
-  const [listaIndicadores, setlistaIndicadores] = useState([]);
+  const { indicadores, loading, error } = useFetchIndicadores();
 
-  useEffect(() => {
-    async function getIndicadores() {
-      try {
-        const indicadores = await fetch('/api/indicador/');
-        const dados = await indicadores.json();
-        setlistaIndicadores(dados);
-      } catch (erro) {
-        console.error('Erro ao buscar indicadores', erro);
-      }
-    }
-    getIndicadores();
-  }, []);
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
+
+  if (error) {
+    return <div>Ocorreu um erro: {error}</div>;
+  }
 
   return (
     <section>
       {tela === 'painel' &&
-        listaIndicadores.map((indicador) => (
+        indicadores.map(({ nome, sigla, valor, descricao, parametros }) => (
           <CardHistorico
-            key={indicador.nome}
-            title={indicador.sigla}
-            valor={indicador.valor}
-            descricao={indicador.descricao}
-            parametros={indicador.parametros}
+            key={nome}
+            title={sigla}
+            valor={valor}
+            descricao={descricao}
+            parametros={parametros}
           />
         ))}
       {tela === 'indicador' && <FormularioIndicador />}
@@ -39,4 +36,6 @@ function Painel() {
     </section>
   );
 }
+/*O useFetch é um hook, uma função que encapsula a lógica de buscar dados de uma API. Ele retorna uma renderização condicional: array (indicadores), um booleano (loading) ou um objeto (error)*/
+
 export default Painel;
