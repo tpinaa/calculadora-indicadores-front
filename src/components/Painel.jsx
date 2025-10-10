@@ -22,7 +22,7 @@ function Painel() {
   return (
     <section>
       {tela === 'painel' &&
-        indicadores.map(({ nome, sigla, valor, descricao, parametros }) => (
+        indicadores?.map(({ nome, sigla, valor, descricao, parametros }) => (
           <CardHistorico
             key={nome}
             title={sigla}
@@ -36,6 +36,6 @@ function Painel() {
     </section>
   );
 }
-/*O useFetch é um hook, uma função que encapsula a lógica de buscar dados de uma API. Ele retorna uma renderização condicional: array (indicadores), um booleano (loading) ou um objeto (error)*/
+/*O useFetch é um hook, uma função que encapsula a lógica de buscar dados de uma API. Ele retorna uma renderização condicional: array (indicadores), um booleano (loading) ou um objeto (error). O encadeamento opcional em indicadores?.map garante que indicadores seja um array antes de iterá-lo, ele simplifica a leitura de propriedades aninhadas em uma cadeia de objetos, sem causar erros se alguma referência for null ou indefined */
 
 export default Painel;

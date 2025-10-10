@@ -1,6 +1,7 @@
 import '../assets/style/Offcanvas.css';
 import { useContext } from 'react';
 /*Importa o hook useContext que serve para evitar o prop drilling, prática de passar dados através de múltiplos níveis de componentes aninhados. O hook permite que o componente consuma dados de um contexto*/
+
 import TelaContext from '../context/TelaContext';
 /*Importa um contexto, uma maneira de compartilhar valores, como estado e função, entre componentes sem ter que passar props manualmente em todos os níveis de componentes aninhados*/
 
@@ -31,7 +32,7 @@ const dropdownItens = [
 
 function Offcanvas() {
   const { escolherTela } = useContext(TelaContext);
-  /*Uma sintaxe de desestruturação de objeto que extrai a função escolherTela de dentro do objeto fornecido pelo TelaContext. Dessa forma, o componente Offcanvas tem acesso direto a essa função que é responsável por alterar o estado para exibir uma nova tela*/
+/*Uma sintaxe de desestruturação de objeto que extrai a função escolherTela de dentro do objeto fornecido pelo TelaContext. Dessa forma, o componente Offcanvas tem acesso direto a essa função que é responsável por alterar o estado para exibir uma nova tela*/
 
   const handleItemClick = (tela) => {
     if (window.bootstrap) {
@@ -41,9 +42,15 @@ function Offcanvas() {
         offcanvas.hide();
       }
     }
-    escolherTela(tela);
+    /*A função handleItemClick é executada sempre que houver um clique em um item do menu, onde o argumento tela serve para identificar o item (estado) clicado. O window.bootstrap é uma verificação de sergurança para garantir que a biblioteca do Bootstrap foi carregada no objeto global window do navegador, evitando erros. E o if (offcanvas) se uma instância válida do OffCanvas foi retornada. O restante identifica o elemento HTML no DOM pelo seu id e o estado associado a ele. Finalmente, o OffCanvas fecha e a tela é carregada com o contexto selecionado pelo usuário*/
+
+    if (typeof escolherTela === 'function') {
+      escolherTela(tela);
+    } else {
+      console.error("ERRO DE CONTEXTO: 'escolherTela' não é uma função. O componente Offcanvas pode estar fora do TelaProvider.");
+    };
+    /* Verifica se a variável escolherTela é uma função. Se a condição for falsa, o else é executado e registra um erro no console */
   };
-  /*A função handleItemClick é executada sempre que houver um clique em um item do menu, onde o argumento tela serve para identificar o item (estado) clicado. O window.bootstrap é uma verificação de sergurança para garantir que a biblioteca do Bootstrap foi carregada no objeto global window do navegador, evitando erros. E o if (offcanvas) se uma instância válida do OffCanvas foi retornada. O restante identifica o elemento HTML no DOM pelo seu id e o estado associado a ele. Finalmente, o OffCanvas fecha e a tela é carregada com o contexto selecionado pelo usuário*/
 
   return (
     <div

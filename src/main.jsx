@@ -6,6 +6,8 @@ import { createRoot } from 'react-dom/client'
 
 import App from './App.jsx'
 
+import ErrorBoundary from './components/ErrorBoundary.jsx';
+
 const container = document.getElementById('root');
 /* Procura o elemento no DOM e armazena o resultado de document.getElementById('root')  */
 
@@ -13,8 +15,10 @@ if (container) {
   const root = createRoot(container);
   root.render(
     <StrictMode>
-      <App />
-    </StrictMode>,
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>,
+      </StrictMode>
   );
 } else {
   console.error("Falha ao encontrar elemento 'root'.");

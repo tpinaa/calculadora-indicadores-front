@@ -12,7 +12,7 @@ import Painel from './components/Painel';
 //importa o arquivo Painel, parte do código que está modularizado em componentes para melhor organização e reutilização.
 
 export default function App() {
-  //exporta a função App como padrão, para que possa ser importado em outros arquivos como default (principal item importado)
+//exporta a função App como padrão, para que possa ser importado em outros arquivos como default (principal item importado)
 
   return (
     <TelaProvider>
